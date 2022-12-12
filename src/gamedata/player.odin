@@ -8,8 +8,9 @@ import "../graphics/sprites"
 
 
 //= Constants
-PLAYER_HEALTH_MAX   :: 4
-PLAYER_SNOWBALL_MAX :: 4
+PLAYER_HEALTH_MAX       :: 4
+PLAYER_SNOWBALL_MAX     :: 7
+PLAYER_SNOWGATHER_TOTAL :: 50
 
 
 //= Structures
@@ -17,6 +18,7 @@ Player :: struct {
 	camera     : raylib.Camera2D,
 	position   : raylib.Vector2,
 	pointer    : raylib.Vector2,
+	bounds     : raylib.BoundingBox,
 
 	charSpr    : sprites.Sprite,
 	pointerSpr : sprites.Sprite,
@@ -24,6 +26,7 @@ Player :: struct {
 	healthCur  : uint,
 
 	snowballCount : uint,
+	snowGather    : uint,
 }
 
 Snowball :: struct {
@@ -35,4 +38,6 @@ Snowball :: struct {
 
 	player   : bool,
 	lob      : bool,
+
+	bounds   : raylib.BoundingBox,
 }

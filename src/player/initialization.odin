@@ -33,6 +33,6 @@ init :: proc() {
 	)
 	animations.add_animation(&player.pointerSpr, {0})
 
-	player.healthCur     = 2
+	player.healthCur     = PLAYER_HEALTH_MAX
 	player.snowballCount = 2
 }

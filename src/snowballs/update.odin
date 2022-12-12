@@ -9,6 +9,7 @@ import "vendor:raylib"
 
 import "../gamedata"
 import "../graphics/sprites"
+import "../utilities"
 
 
 //= Procedures
@@ -20,22 +21,40 @@ update :: proc() {
 
 		result : bool = false
 
-		if !member.lob {
+		if member.lob {
 			//* Rotation
 			member.rotation += 4
 			if member.rotation > 360 do member.rotation = 0
 
 			//* Scale
-			ratio := distance(member.position, member.target) / distance(member.starting, member.target)
+			ratio := utilities.distance(member.position, member.target) / utilities.distance(member.starting, member.target)
 			if ratio < 0.5 do member.scale -= 0.01
 			if ratio > 0.5 do member.scale += 0.01
 
 			//* Movement
-			member.position, result = moveto(member.starting, member.position, member.target, 0.01)
+			member.position, result = utilities.moveto(member.starting, member.position, member.target, 0.01)
+
+			//* Updating bounds
+			if utilities.distance(member.position, member.target) <= 2 {
+				member.bounds = {
+					{member.position.x-4.5,member.position.y-2.5,0},
+					{member.position.x+0  ,member.position.y+3  ,0},
+				}
+			} else {
+				member.bounds = {}
+			}
 		} else {
 			//* Movement
-			member.position, result = moveto(member.starting, member.position, member.target, 0.02)
+			member.position, result = utilities.moveto(member.starting, member.position, member.target, 0.02)
+
+			//* Updating bounds
+			member.bounds = {
+				{member.position.x-3.5,member.position.y-3.5,0},
+				{member.position.x+2  ,member.position.y+2  ,0},
+			}
 		}
+
+		collision_checks(i)
 
 		if result {
 			remove(i)
@@ -52,31 +71,4 @@ remove :: proc(index : int) {
 
 	delete(gamedata.snowballs)
 	gamedata.snowballs = newArr
-}
-
-distance :: proc(
-	pos1,pos2 : raylib.Vector2,
-) -> f32 {
-	value : f32 = math.sqrt(math.pow(pos2.x - pos1.x, 2) + math.pow(pos2.y - pos1.y, 2))
-
-	return value
-}
-
-moveto :: proc(
-	starting, position, target : raylib.Vector2,
-	speed : f32 = 0.2,
-) -> (raylib.Vector2, bool) {
-	value  : raylib.Vector2 = position
-	result : bool           = false
-
-	value = position + (speed * (target - starting))
-
-	if  value.x < target.x + 0.5 &&
-		value.x > target.x - 0.5 &&
-		value.y < target.y + 0.5 &&
-		value.y > target.y - 0.5 {
-			result = true
-	}
-
-	return value, result
 }

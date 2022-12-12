@@ -21,3 +21,4 @@ snowballSpr    : raylib.Texture2D
 ui_healthbar_1 : raylib.Texture2D
 ui_healthbar_2 : raylib.Texture2D
 ui_snowball    : raylib.Texture2D
+ui_snowgather  : raylib.Texture2D

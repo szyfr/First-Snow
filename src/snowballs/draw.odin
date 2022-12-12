@@ -20,5 +20,9 @@ draw :: proc() {
 			gamedata.snowballs[i].scale,
 			raylib.WHITE,
 		)
+		raylib.DrawBoundingBox(
+			gamedata.snowballs[i].bounds,
+			raylib.PURPLE,
+		)
 	}
 }

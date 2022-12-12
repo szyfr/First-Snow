@@ -31,17 +31,7 @@ main_initialization :: proc() {
 	gamedata.ui_healthbar_1 = raylib.LoadTexture("data/sprites/hpbar_1.png")
 	gamedata.ui_healthbar_2 = raylib.LoadTexture("data/sprites/hpbar_2.png")
 	gamedata.ui_snowball    = raylib.LoadTexture("data/sprites/snowball_ui.png")
-
-	snowballTest : gamedata.Snowball = {
-		{0,0},
-		{0,0},
-		{100,40},
-		0,
-		0.75,
-		false,
-		false,
-	}
-	append(&gamedata.snowballs, snowballTest)
+	gamedata.ui_snowgather  = raylib.LoadTexture("data/sprites/bar_1.png")
 }
 
 //* Free
