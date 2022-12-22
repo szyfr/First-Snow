@@ -37,8 +37,10 @@ update :: proc() {
 			//* Updating bounds
 			if utilities.distance(member.position, member.target) <= 2 {
 				member.bounds = {
-					{member.position.x-4.5,member.position.y-2.5,0},
-					{member.position.x+0  ,member.position.y+3  ,0},
+					//{member.position.x-4.5,member.position.y-2.5,0},
+					//{member.position.x+0  ,member.position.y+3  ,0},
+					{member.position.x-3, member.position.y-3.5, 0},
+					{member.position.x+2, member.position.y+1.5, 0},
 				}
 			} else {
 				member.bounds = {}

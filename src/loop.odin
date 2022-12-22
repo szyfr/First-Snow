@@ -9,6 +9,7 @@ import "gamedata"
 import "player"
 import "ui"
 import "snowballs"
+import "enemies"
 
 
 //= Procedures
@@ -17,6 +18,7 @@ import "snowballs"
 update :: proc() {
 	player.update()
 	snowballs.update()
+	enemies.update()
 }
 
 //* Draw
@@ -28,6 +30,7 @@ draw :: proc() {
 	BeginMode2D(gamedata.player.camera)
 
 	//* Draw
+	enemies.draw()
 	player.draw()
 	snowballs.draw()
 

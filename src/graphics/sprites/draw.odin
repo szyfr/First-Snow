@@ -40,12 +40,12 @@ draw_sprite :: proc(
 		sprite.texture,
 		rect,
 		{
-			position.x - sprite.dim.x/2,
-			position.y - sprite.dim.y/2,
+			position.x,
+			position.y,
 			sprite.dim.x,
 			sprite.dim.y,
 		},
-		{0,0},
+		{sprite.dim.x/2,sprite.dim.y/2},
 		sprite.rotation,
 		sprite.color,
 	)

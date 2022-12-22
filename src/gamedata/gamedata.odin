@@ -15,8 +15,10 @@ SCREEN_HEIGHT ::  720
 player         : ^Player
 
 snowballs      : [dynamic]Snowball
-
 snowballSpr    : raylib.Texture2D
+
+enemies        : [dynamic]Enemy
+enemyTexture   : raylib.Texture2D
 
 ui_healthbar_1 : raylib.Texture2D
 ui_healthbar_2 : raylib.Texture2D

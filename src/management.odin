@@ -6,6 +6,7 @@ import "vendor:raylib"
 
 import "gamedata"
 import "player"
+import "enemies"
 
 
 //= Procedures
@@ -24,7 +25,12 @@ main_initialization :: proc() {
 	//* Player
 	player.init()
 
+	//* ENEMY TEST
+
+	append(&gamedata.enemies, enemies.create())
+
 	//* Misc graphics
+	gamedata.enemyTexture   = raylib.LoadTexture("data/sprites/player.png")
 	gamedata.snowballSpr    = raylib.LoadTexture("data/sprites/snowball.png")
 
 	//* UI

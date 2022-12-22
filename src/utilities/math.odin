@@ -36,3 +36,11 @@ moveto :: proc(
 
 	return value, result
 }
+
+rotate_towards :: proc(
+	p1, p2 : raylib.Vector2,
+	offset : f32 = 0,
+) -> f32 {
+	vect := p2 - p1
+	return ((math.atan2(vect.y, vect.x) + 2*math.PI) *360 / (2*math.PI)+offset)
+}
