@@ -10,12 +10,14 @@ import "player"
 import "ui"
 import "snowballs"
 import "enemies"
+import "arena"
 
 
 //= Procedures
 
 //* Update
 update :: proc() {
+	arena.update()
 	player.update()
 	snowballs.update()
 	enemies.update()
@@ -26,10 +28,11 @@ draw :: proc() {
 	using raylib
 
 	BeginDrawing()
-	ClearBackground(raylib.RAYWHITE)
+	ClearBackground({222,255,222,255})
 	BeginMode2D(gamedata.player.camera)
 
 	//* Draw
+	arena.draw()
 	enemies.draw()
 	player.draw()
 	snowballs.draw()
@@ -51,6 +54,12 @@ draw :: proc() {
 		)
 		DrawText(str, 10, 125, 20, raylib.BLACK)
 	}
+	if gamedata.win do DrawText(
+		"YOU WIN!",
+		(gamedata.SCREEN_WIDTH/2) - 100,
+		gamedata.SCREEN_HEIGHT/2 - 20,
+		40, raylib.BLACK,
+	)
 
 	EndDrawing()
 }

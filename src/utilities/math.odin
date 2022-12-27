@@ -17,6 +17,7 @@ distance :: proc(
 	return value
 }
 
+
 //* Lerp between two points. Returns true when arriving.
 moveto :: proc(
 	starting, position, target : raylib.Vector2,
@@ -37,10 +38,33 @@ moveto :: proc(
 	return value, result
 }
 
+
+//* Create an angle that points from one point to another
 rotate_towards :: proc(
 	p1, p2 : raylib.Vector2,
 	offset : f32 = 0,
 ) -> f32 {
 	vect := p2 - p1
-	return ((math.atan2(vect.y, vect.x) + 2*math.PI) *360 / (2*math.PI)+offset)
+	return (((math.atan2(vect.y, vect.x) + (2 * math.PI)) * 360) / (2*math.PI) + offset)
+}
+
+
+//* Rotate a point around another
+rotate_point :: proc(
+	point, origin : raylib.Vector2,
+	angle         : f32,
+) -> raylib.Vector2 {
+	s := math.sin(angle)
+	c := math.cos(angle)
+
+	secondPoint := point
+	secondPoint.x -= origin.x
+	secondPoint.y -= origin.y
+
+	newPoint : raylib.Vector2 = {
+		((secondPoint.x * c) - (secondPoint.y * s)) + origin.x,
+		((secondPoint.x * s) - (secondPoint.y * c)) + origin.y,
+	}
+
+	return newPoint
 }

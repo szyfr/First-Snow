@@ -22,6 +22,11 @@ collision_checks :: proc(
 	}
 
 	//* Check for wall collisions
+	for i:=0;i<len(gamedata.walls);i+=1 {
+		if raylib.CheckCollisionBoxes(member.bounds, gamedata.walls[i].bounds) {
+			remove(index)
+		}
+	}
 
 	//* Check for enemy collisions
 	if member.player {

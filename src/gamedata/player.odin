@@ -9,8 +9,9 @@ import "../graphics/sprites"
 
 //= Constants
 PLAYER_HEALTH_MAX       :: 4
-PLAYER_SNOWBALL_MAX     :: 7
-PLAYER_SNOWGATHER_TOTAL :: 50
+PLAYER_SNOWBALL_START   :: 0
+PLAYER_SNOWBALL_MAX     :: 3
+PLAYER_SNOWGATHER_TOTAL :: 40
 
 
 //= Structures
@@ -23,6 +24,7 @@ Player :: struct {
 	charSpr    : sprites.Sprite,
 	pointerSpr : sprites.Sprite,
 
+	rounds     : uint,
 	healthCur  : uint,
 
 	snowballCount : uint,

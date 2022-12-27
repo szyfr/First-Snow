@@ -7,6 +7,7 @@ import "vendor:raylib"
 import "gamedata"
 import "player"
 import "enemies"
+import "arena"
 
 
 //= Procedures
@@ -23,11 +24,11 @@ main_initialization :: proc() {
 	raylib.SetTargetFPS(60)
 
 	//* Player
-	player.init()
+	player.init(false)
 
-	//* ENEMY TEST
-
-	append(&gamedata.enemies, enemies.create())
+	//* Map
+	arena.choose_new_map()
+	gamedata.wallTexture    = raylib.LoadTexture("data/sprites/wall.png")
 
 	//* Misc graphics
 	gamedata.enemyTexture   = raylib.LoadTexture("data/sprites/player.png")

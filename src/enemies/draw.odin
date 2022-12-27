@@ -15,7 +15,7 @@ draw :: proc() {
 		raylib.DrawTexturePro(
 			gamedata.enemyTexture,
 			{
-				0, 0,
+				8, 0,
 				8, 8,
 			},
 			{
@@ -24,11 +24,11 @@ draw :: proc() {
 			},
 			{4,4},
 			0,
-			raylib.RED,
+			raylib.WHITE,
 		)
-		raylib.DrawBoundingBox(
-			enemy.bounds,
-			raylib.PURPLE,
-		)
+	//	raylib.DrawBoundingBox(
+	//		enemy.bounds,
+	//		raylib.PURPLE,
+	//	)
 	}
 }

@@ -38,8 +38,8 @@ draw :: proc() {
 		0,
 		raylib.GREEN,
 	)
-	raylib.DrawBoundingBox(
-		player.bounds,
-		raylib.PURPLE,
-	)
+	//raylib.DrawBoundingBox(
+	//	player.bounds,
+	//	raylib.PURPLE,
+	//)
 }

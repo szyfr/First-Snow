@@ -28,9 +28,9 @@ draw :: proc() {
 	)
 
 	ratio := f32(gamedata.player.healthCur) / f32(gamedata.PLAYER_HEALTH_MAX)
-	col   := raylib.GREEN
-	if ratio < .5  do col = raylib.YELLOW
-	if ratio < .25 do col = raylib.RED
+	col   : raylib.Color = {99,206,8,255}
+	if ratio < .75 do col = {255,255,58,255}
+	if ratio < .50 do col = {247,82,49,255}
 
 	raylib.DrawTexturePro(
 		gamedata.ui_healthbar_2,

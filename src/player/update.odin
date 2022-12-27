@@ -15,10 +15,23 @@ update :: proc() {
 
 	if player.snowGather == 0 {
 		//* Movement
-		if raylib.IsKeyDown(raylib.KeyboardKey.W) do player.position -= {0,0.4}
-		if raylib.IsKeyDown(raylib.KeyboardKey.S) do player.position += {0,0.4}
-		if raylib.IsKeyDown(raylib.KeyboardKey.A) do player.position -= {0.4,0}
-		if raylib.IsKeyDown(raylib.KeyboardKey.D) do player.position += {0.4,0}
+		newPosition  : raylib.Vector2     = player.position
+		newCollision : raylib.BoundingBox = {}
+		result       : bool               = true
+		if raylib.IsKeyDown(raylib.KeyboardKey.W) do newPosition -= {0,0.8}
+		if raylib.IsKeyDown(raylib.KeyboardKey.S) do newPosition += {0,0.8}
+		if raylib.IsKeyDown(raylib.KeyboardKey.A) do newPosition -= {0.8,0}
+		if raylib.IsKeyDown(raylib.KeyboardKey.D) do newPosition += {0.8,0}
+		newCollision = {
+			{newPosition.x-4, newPosition.y-4, 0},
+			{newPosition.x+4, newPosition.y+4, 0},
+		}
+
+		for i:=0;i<len(gamedata.walls);i+=1 {
+			if raylib.CheckCollisionBoxes(newCollision, gamedata.walls[i].bounds) do result = false
+		}
+
+		if result do player.position = newPosition
 
 		//* Straight throw snowball
 		if raylib.IsMouseButtonPressed(raylib.MouseButton.LEFT) {
