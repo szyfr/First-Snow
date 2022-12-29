@@ -1,13 +1,12 @@
 
-# For the Trees
+# First Snow
 ### Language: Odin
 
-You play as the Sorax (He speaks for the Trees) But a corruption is encrouching, so you must take their knees!
+The first snow of the year has fallen and with it, winter has begun and so has the first snowball fight.
 
-Run around and kill corrupted forest spirits before they get to the Big Tree tm. Sometimes the corrupted leave a little bit of their old selves behind in the form of seed that restore health to the Big Tree tm.
+Knockout all combatants before you're knocked out and try to beat the gauntlet!
 
-There is no winning, just seeing how long you can go until the Big Tree tm is destroyed by the evils of ~~capitalism~~ corruption... Yeah, no metaphor here...
 
 ## Controls
 - WASD : Movement
-- Space : Attack
+- Left mouse : Attack
